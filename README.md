@@ -111,12 +111,13 @@ There are three possible values for this option:
 
 The format for the bookmark description.
 
-There are two possible values for this option:
+There are three possible values for this option:
 
 | Value    | Description                                                                                     |
 | -------- | ----------------------------------------------------------------------------------------------- |
 | `full`   | The default, it shows the full path of the bookmark, i.e., the parent folder + the hovered file |
 | `parent` | Only shows the parent folder of the bookmark                                                    |
+| `name`   | Only shows the parent folders name of the bookmark                                              |
 
 ### `file_pick_mode`
 

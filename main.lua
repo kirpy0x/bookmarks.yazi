@@ -38,9 +38,9 @@ local _get_bookmark_file = ya.sync(function(state)
 	local folder = cx.active.current
 
 	if state.file_pick_mode == "parent" or not folder.hovered then
-		return { url = folder.cwd, is_parent = true }
+		return { url = folder.cwd, is_parent = true, name = folder.cwd.name }
 	end
-	return { url = folder.hovered.url, is_parent = false }
+	return { url = folder.hovered.url, is_parent = false, name = folder.cwd.name }
 end)
 
 local _generate_description = ya.sync(function(state, file)
@@ -51,6 +51,10 @@ local _generate_description = ya.sync(function(state, file)
 
 	if state.desc_format == "parent" then
 		return tostring(file.url.parent)
+	end
+
+	if state.desc_format == "name" then
+		return tostring(file.name)
 	end
 	-- full description
 	return tostring(file.url)
@@ -337,6 +341,8 @@ return {
 
 		if args.desc_format == "parent" then
 			state.desc_format = "parent"
+		elseif args.desc_format == "name" then
+			state.desc_format = "name"
 		else
 			state.desc_format = "full"
 		end
